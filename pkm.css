@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+
+    background: radial-gradient(
+    100% 100% at 50% 50%,
+    rgba(137, 119, 225, 1) 11%,
+    rgba(103, 76, 158, 1) 31%,
+    rgba(81, 69, 156, 1) 43%,
+    rgba(82, 59, 118, 1) 70%,
+    rgba(41, 29, 71, 1) 87%
+  );
+  background-blend-mode: normal;
+    
+}
+
+header img{
+
+    width: 280px;
+    padding: 12px;
+}
+
+main{
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(14, 14, 14, 0.932);
+}
+
+.contenedor{
+    width: 100%;
+
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 360px));
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 25px;
+
+}
+
+
+.art1, .art2{
+    position: relative;
+    width: 250px;
+    transition: all .3s ease;
+
+    margin: 3px;
+}
+
+.art1 img:first-child, .art2 img:first-child{
+    box-shadow: 0 40px 60px -60px rgb(151, 15, 230);
+    border-radius: 4px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.art1 img:last-child{
+    position: absolute;
+    width: 200px;
+    bottom: 26px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(25%);
+    transition: .3 ease;
+    opacity: 0;
+
+}
+
+.art2 img:last-child{
+    position: absolute;
+    width: 140px;
+    bottom: 26px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(25%);
+    transition: .3 ease;
+    opacity: 0;
+
+}
+
+
+
+
+.art1:hover, .art2:hover{
+    transform: 
+        perspective(250px)
+        rotateX(10deg)
+        translateY(-5%)
+        translateZ(0);
+}
+
+.art1::before,
+.art2::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+
+    background-image: 
+        linear-gradient(
+        to bottom,
+        transparent 10%,
+        rgba(29, 1, 29, 0.5) 50%,
+        rgba(0, 0, 0) 95%
+    );
+    opacity: 0;
+    transition:  all .3s ease;
+}
+
+
+
+.art1:hover::before, .art2:hover::before{
+    opacity: 1;
+
+}
+
+.art1:hover img:last-child, .art2:hover img:last-child{
+    opacity: 1;
+    transform: translateY(10%);
+}
+
+
+.seccion-boton {
+    /* Hace que el div del botón abarque de la columna 1 a la 4 (las 3 columnas) */
+    grid-column: 1 / -1; 
+    display: flex;
+    justify-content: center;
+    margin: 8px;
+
+    width: 35%;
+
+    padding: 15px 40px;
+
+    background: linear-gradient(45deg, #674c9e, #8977e1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.seccion-boton:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #8977e1, #674c9e);
+    box-shadow: 0 0 20px rgba(137, 119, 225, 0.6);
+    border-color: rgb(236, 215, 27);
+}
+
+
+.seccion-boton a{
+    text-decoration: none;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+
+@media (max-width: 990px){
+    .contenedor{
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: space-around;
+    }
+
+    .art1, .art2{
+        /* Quitamos los 250px fijos y dejamos que el grid mande */
+        width: 100%;
+        max-width: 200px;
+        margin: 10px auto;
+    }
+}
+
+
+@media (max-width: 600px){
+    .contenedor{
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+    article{
+        margin: 20px;
+        padding: 18px;
+    }
+}
