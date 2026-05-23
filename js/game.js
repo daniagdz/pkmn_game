@@ -8,7 +8,7 @@ const combinaciones = [
 ];
 
 console.log(clicked);
-window.addEventListener('load', function(){
+window.addEventListener('load', function () {
 
     const tablero = document.querySelectorAll('.tablero');
 
@@ -17,7 +17,7 @@ window.addEventListener('load', function(){
     divWin.style.display = 'none';
 
 
-    for(let i=0; i < tablero.length; i++){
+    for (let i = 0; i < tablero.length; i++) {
 
         tablero[i].addEventListener('click', () => cambiar(i));
 
@@ -28,21 +28,21 @@ window.addEventListener('load', function(){
 
 })
 
-function cambiar(i){
+function cambiar(i) {
     const tablero = document.querySelectorAll('.tablero');
 
 
-    if(clicked[i] == true){
+    if (clicked[i] == true) {
         return;
     }
-        
+
     clicked[i] = true;
 
-    if(turno % 2 == 0){
+    if (turno % 2 == 0) {
         console.log('se hizo click player 2');
-        
+
         tablero[i].classList.add("p2", 'animacion-p2');
-    }else{
+    } else {
         console.log('se hizo click player 1');
 
         tablero[i].classList.add("p1", 'animacion-p1');
@@ -50,7 +50,7 @@ function cambiar(i){
 
     turno++;
 
-    setTimeout(function(){
+    setTimeout(function () {
         comprobarVictoria();
     }, 600)
 
@@ -58,10 +58,13 @@ function cambiar(i){
 }
 
 
-function comprobarVictoria(){
+function comprobarVictoria() {
     const tablero = document.querySelectorAll('.tablero');
 
-    for(let i=0; i< combinaciones.length; i++){
+    const divWin = document.getElementById('win');
+    const result = document.getElementById('result');
+
+    for (let i = 0; i < combinaciones.length; i++) {
         const [a, b, c] = combinaciones[i];
 
 
@@ -73,47 +76,40 @@ function comprobarVictoria(){
         console.log(classB);
         console.log(classC);
 
-        const divWin = document.getElementById('win');
-        const result = document.getElementById('result');
 
-        if((classA == "p1" || classA == "p2" ) && classA === classB && classA === classC){
-            
-            
+        if ((classA == "p1" || classA == "p2") && classA === classB && classA === classC) {
 
             let ganador = classA == "p1" ? "Jugador 1" : "Jugador 2";
 
 
-            for(let j=0; j < tablero.length; j++) {
+            for (let j = 0; j < tablero.length; j++) {
                 clicked[j] = true;
             }
-            
 
-            result.innerHTML = ""; 
-            
+
+            result.innerHTML = "";
             divWin.style.display = 'flex';
+
             const h3 = document.createElement('h3');
             h3.textContent = `El ganador es el jugador ${ganador}`;
             result.appendChild(h3);
 
-
-            const main = document.getElementById('main');
-
-
             return;
         }
 
-        if(turno > 9){
-
-            result.innerHTML = ""; 
-            divWin.style.display = 'flex';
-            
-            const h3 = document.createElement('h3');
-            h3.textContent = "¡Empate! No quedan más turnos";
-            result.appendChild(h3);
-            return;
-        }
     }
-    
+
+    if (turno > 9) {
+
+        result.innerHTML = "";
+        divWin.style.display = 'flex';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = "¡Empate! No quedan más turnos";
+        result.appendChild(h3);
+        return;
+    }
+
     console.log(clicked);
 }
 
