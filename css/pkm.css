@@ -28,6 +28,20 @@ header img{
     padding: 12px;
 }
 
+body{
+    /*min-height: 100vh;*/
+
+    display: flex;
+
+    flex: 1;
+    justify-content: center;
+
+    flex-direction: column;
+
+    width: 100%;
+    overflow: hidden;
+}
+
 main{
     width: 100%;
     min-height: 100vh;
@@ -37,7 +51,6 @@ main{
 .contenedor{
     width: 100%;
 
-
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 360px));
     justify-content: center;
@@ -46,14 +59,16 @@ main{
 
     gap: 8px;
 
-    padding: 25px;
+    /*padding: 25px;*/
+    padding: 18px;
 
 }
 
 
 .art1, .art2{
     position: relative;
-    width: 250px;
+    /*width1: 250px;*/
+    width: 180px;
     transition: all .3s ease;
 
     margin: 3px;
@@ -91,9 +106,6 @@ main{
     opacity: 0;
 
 }
-
-
-
 
 .art1:hover, .art2:hover{
     transform: 
@@ -166,11 +178,12 @@ main{
 .seccion-boton a{
     text-decoration: none;
 
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: white;
+    font-family: "Pixelify Sans", sans-serif;
 
-    letter-spacing: 4px;
+    letter-spacing: 6px;
     text-transform: uppercase;
 }
 
@@ -184,19 +197,19 @@ main{
     .art1, .art2{
         /* Quitamos los 250px fijos y dejamos que el grid mande */
         width: 100%;
-        max-width: 200px;
+        max-width: 180px;
         margin: 10px auto;
     }
 }
 
 
 @media (max-width: 600px){
+    body{
+        overflow-y: auto;
+    }
     .contenedor{
         grid-template-columns: 1fr;
         justify-content: center;
     }
-    article{
-        margin: 20px;
-        padding: 18px;
-    }
+
 }

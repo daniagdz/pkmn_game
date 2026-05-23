@@ -1,0 +1,329 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: sans-serif;
+
+
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    background: radial-gradient(100% 100% at 50% 50%,
+            rgba(137, 119, 225, 1) 11%,
+            rgba(103, 76, 158, 1) 31%,
+            rgba(81, 69, 156, 1) 43%,
+            rgba(82, 59, 118, 1) 70%,
+            rgba(41, 29, 71, 1) 87%);
+    background-blend-mode: normal;
+}
+
+header img {
+    width: 280px;
+    padding: 12px;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+
+    width: 100vw;
+    height: 85vh;
+
+    background: radial-gradient(100% 100% at 50% 50%,
+            rgba(87, 87, 87, 1) 8%,
+            rgba(71, 71, 71, 1) 27%,
+            rgba(54, 54, 54, 1) 52%,
+            rgba(0, 0, 0, 1) 78%,
+            rgba(0, 0, 0, 1) 100%);
+    background-blend-mode: normal;
+    box-sizing: border-box;
+
+    position: relative;
+}
+
+#zona {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.players {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+
+    background-color: rgba(95, 95, 95, 0.527);
+    box-shadow: 0 0 16px #715d99;
+    border-radius: 12px;
+
+    margin: 8rem;
+}
+
+.contp {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #8977e1;
+    box-shadow: 0 0 15px rgba(137, 119, 225, 0.5);
+
+    margin: 2rem;
+}
+
+.contp img {
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    height: 100%;
+}
+
+#tablero-juego {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.tablero {
+    width: 160px;
+    height: 160px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: solid rgb(65, 65, 65) 4px;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.932);
+    background-color: rgb(223, 231, 255);
+}
+
+#div_botones {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0;
+    position: static;
+}
+
+#div_botones a {
+    text-decoration: none;
+    color: black;
+    width: 5rem;
+    padding: 0.3rem;
+    text-align: center;
+    background: linear-gradient(45deg, #674c9e, #8977e1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+#div_botones a:hover {
+    background: linear-gradient(45deg, #8977e1, #674c9e);
+    box-shadow: 0 0 20px rgba(137, 119, 225, 0.6);
+    border-color: rgb(236, 215, 27);
+}
+
+
+#win {
+    position: absolute;
+
+    width: 100vw;
+    height: 85vh;
+
+
+    box-shadow: 0 0 28px rgb(14, 14, 14);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    backdrop-filter: blur(4px);
+    /*-webkit-backdrop-filter: blur(4px);*/
+
+    z-index: 1000;
+
+}
+
+#result {
+    width: 760px;
+    height: 300px;
+
+    background-color: rgb(233, 224, 255);
+    border-radius: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    box-shadow: 0 0 16px rgb(228, 173, 250);
+}
+
+#btnWin,
+#btnMenu {
+
+    position: absolute;
+
+    bottom: 34%;
+    display: flex;
+    justify-content: center;
+    margin: 8px;
+
+    width: 2rem;
+    padding: 15px 40px;
+
+    text-decoration: none;
+
+    color: white;
+    background: linear-gradient(45deg, #9674db, #8977e1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+#btnWin {
+    left: 38%;
+}
+
+#btnMenu {
+    left: 56%;
+}
+
+#btnWin:hover,
+#btnMenu:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #8977e1, #674c9e);
+    box-shadow: 0 0 20px rgba(137, 119, 225, 0.6);
+    border-color: rgb(236, 215, 27);
+}
+
+
+/* --- TUS ANIMACIONES --- */
+
+.animacion-p1 {
+    animation: girarP1 0.4s ease-out forwards;
+}
+
+.animacion-p2 {
+    animation: girarP2 0.4s ease-out forwards;
+}
+
+@keyframes girarP1 {
+    0% {
+        transform: scale(1) rotateY(0deg);
+    }
+
+    25% {
+        transform: scale(0.8) rotateY(90deg);
+        background-image: url('../img/umbreon4.png');
+        background-size: cover;
+        background-color: black;
+    }
+
+    50% {
+        transform: scale(0.8) rotateY(180deg);
+        background-image: url('../img/umbreon4.png');
+        background-size: cover;
+        background-color: black;
+    }
+
+    75% {
+        transform: scale(1) rotateY(260deg);
+        background-image: url('../img/umbreon4.png');
+        background-size: cover;
+        background-color: black;
+    }
+
+    100% {
+        transform: scale(1) rotateY(360deg);
+        background-image: url('../img/umbreon4.png');
+        background-size: cover;
+        background-color: black;
+        border: solid 4px rgb(245, 179, 82);
+    }
+}
+
+@keyframes girarP2 {
+    0% {
+        transform: scale(1) rotateY(0deg);
+    }
+
+    25% {
+        transform: scale(0.8) rotateY(90deg);
+        background-image: url('../img/espeon2.jpg');
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    50% {
+        transform: scale(0.8) rotateY(180deg);
+        background-image: url('../img/espeon2.jpg');
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    75% {
+        transform: scale(1) rotateY(260deg);
+        background-image: url('../img/espeon2.jpg');
+        background-size: cover;
+        background-color: transparent;
+    }
+
+    100% {
+        transform: scale(1) rotateY(360deg);
+        background-image: url('../img/espeon2.jpg');
+        background-size: cover;
+        object-fit: cover;
+        background-color: transparent;
+        border: rgb(179, 85, 121) solid 4px;
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    header img{
+        width: 220px;
+    }
+
+    #tablero-juego {
+        max-width: 90%;
+    }
+
+    .tablero {
+        width: 110px;
+        height: 110px;
+    }
+
+    #result {
+        max-width: 90%;
+    }
+
+
+    #btnWin {
+        left: 24%;
+    }
+
+    #btnMenu {
+        left: 56%;
+    }
+}
